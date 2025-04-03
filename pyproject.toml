@@ -1,0 +1,26 @@
+[project]
+name = "llm-query-compiler"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "dev-bearabbit",email = "dev.bearabbit@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pydantic (>=2.11.1,<3.0.0)",
+    "openai (>=1.70.0,<2.0.0)"
+]
+
+[tool.poetry]
+packages = [
+    { include = "llm_query_compiler" }
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.5"
+

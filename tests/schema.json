@@ -1,0 +1,41 @@
+{
+    "intent": {
+      "type": "string",
+      "required": true,
+      "description": "The user's main goal or purpose. For example, finding a product, getting a recommendation, or searching for a category."
+    },
+    "category": {
+      "type": "string",
+      "required": true,
+      "description": "The main topic or classification that best represents the user's request.",
+      "categorical": [
+        {
+          "label": "전자기기",
+          "description": "Topics related to computers, TVs, smartphones, wearables, and how to use electronic devices."
+        },
+        {
+          "label": "음식",
+          "description": "Topics related to restaurants, food, recipes, and cooking."
+        },
+        {
+          "label": "패션",
+          "description": "Topics related to clothing, cosmetics, beauty, and fashion trends."
+        },
+        {
+          "label": "부동산",
+          "description": "Topics related to housing, moving, home rentals, and real estate."
+        }
+      ]
+    },
+    "filters": {
+      "type": "dict",
+      "required": false,
+      "description": "Optional filtering conditions to narrow down the search results, such as price range, brand, or location."
+    },
+    "sort": {
+      "type": "string",
+      "required": false,
+      "description": "Sort order preference for the results. For example, by relevance, popularity, or price."
+    }
+  }
+  
