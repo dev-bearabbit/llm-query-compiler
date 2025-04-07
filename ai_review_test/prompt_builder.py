@@ -19,7 +19,14 @@ class PromptBuilder:
         return "\n".join(hints)
 
     def build(self, user_input: str, schema_json: str, schema_dict: dict) -> str:
-        schema_obj = json.loads(schema_json)
+         try:
+             schema_obj = json.loads(schema_json)
+         except json.JSONDecodeError:
+             raise ValueError("Invalid schema JSON provided")
+        required_fields = schema_obj.get("required", [])
+        enum_hint_text = self.extract_enum_hints(schema_dict)
+    
+        enum_hint_section = f"# {enum_hint_text}" if enum_hint_text else ""
         required_fields = schema_obj.get("required", [])
         enum_hint_text = self.extract_enum_hints(schema_dict)
 
@@ -36,7 +43,7 @@ Instructions:
 - Include these required fields: {required_fields}
 - Optional fields must be included with null if missing
 - Always include all fields as keys
-# {enum_hint_text}
+{enum_hint_section}
 Respond with a valid JSON object only.
 """.strip()
 
